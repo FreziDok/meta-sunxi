@@ -2,14 +2,16 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 DEPENDS:append:sunxi = " bc-native dtc-native swig-native python3-native flex-native bison-native "
 DEPENDS:append:sun50i = " trusted-firmware-a"
+DEPENDS:append:sun55i = " trusted-firmware-a"
 
-COMPATIBLE_MACHINE:sunxi = "(sun4i|sun5i|sun7i|sun8i|sun9i|sun50i)"
+COMPATIBLE_MACHINE:sunxi = "(sun4i|sun5i|sun7i|sun8i|sun9i|sun50i|sun55i)"
 
 DEFAULT_PREFERENCE:sun4i = "1"
 DEFAULT_PREFERENCE:sun5i = "1"
 DEFAULT_PREFERENCE:sun7i = "1"
 DEFAULT_PREFERENCE:sun8i = "1"
 DEFAULT_PREFERENCE:sun50i = "1"
+DEFAULT_PREFERENCE:sun55i = "1"
 
 SRC_URI:append:sunxi = " \
     file://0001-nanopi_neo_air_defconfig-Enable-eMMC-support.patch \
@@ -32,8 +34,10 @@ UBOOT_ENV:sunxi = "boot"
 
 EXTRA_OEMAKE:append:sunxi = ' HOSTLDSHARED="${BUILD_CC} -shared ${BUILD_LDFLAGS} ${BUILD_CFLAGS}" '
 EXTRA_OEMAKE:append:sun50i = " BL31=${DEPLOY_DIR_IMAGE}/trusted-firmware-a/bl31.bin SCP=/dev/null"
+EXTRA_OEMAKE:append:sun55i = " BL31=${DEPLOY_DIR_IMAGE}/trusted-firmware-a/bl31.bin SCP=/dev/null"
 
 do_compile:sun50i[depends] += "trusted-firmware-a:do_deploy"
+do_compile:sun55i[depends] += "trusted-firmware-a:do_deploy"
 
 do_compile:append:sunxi() {
     ${UBOOT_MKIMAGE} -C none -A arm -T script -d ${UNPACKDIR}/boot.cmd ${UNPACKDIR}/${UBOOT_ENV_BINARY}
