@@ -38,6 +38,8 @@ SRC_URI:append = " \
 	file://patches/0004-dts-allwinner-bananapi-m64-Consistent-nodes-for-mmc-devices.patch \
 	file://patches/0005-ARM-dts-sunxi-Add-MMC-alias-for-consistent-enumerati.patch \
 	file://patches/0006-dts-allwinner-orangepi-zero-mmc-aliases-for-consiste.patch \
+	file://patches/0001-arm64-dts-allwinner-a523-add-gmac200-ethernet-controller.patch \
+	file://patches/0001-arm64-dts-allwinner-orangepi-4a-enable-gmac200.patch \
 "
 
 SRC_URI:append:use-mailine-graphics = " file://drm.cfg"
