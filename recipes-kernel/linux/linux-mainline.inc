@@ -1,7 +1,7 @@
 SECTION = "kernel"
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
-COMPATIBLE_MACHINE = "(sun4i|sun5i|sun7i|sun8i|sun9i|sun50i)"
+COMPATIBLE_MACHINE = "(sun4i|sun5i|sun7i|sun8i|sun9i|sun50i|sun55i)"
 
 inherit kernel
 
@@ -45,6 +45,8 @@ SRC_URI:append:bananapi = " file://axp20x.cfg"
 SRC_URI:append:bananapi-m2-berry = " file://axp20x.cfg"
 SRC_URI:append:bananapi-m2-zero = " file://axp20x.cfg"
 SRC_URI:append:cubietruck = " file://axp20x.cfg"
+SRC_URI:append:orange-pi-4a = " file://axp20x.cfg \
+								file://ext4.cfg"
 SRC_URI:append:nanopi-neo-air = " file://cam500b.cfg"
 SRC_URI:append:orange-pi-prime = " \
 	file://0001-dts-sun50i-h5-enable-power-button-for-orange-pi-prime.patch \
